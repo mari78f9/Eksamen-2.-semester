@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+img {
+    width: 100%;
+}
+
 /* Fjerner linjen under a tags */
 
 a {
@@ -39,6 +43,16 @@ a {
 
 }
 
+#splash {
+    max-width: none;
+    background-image: url(images/splash.png);
+    width: 100vw;
+    height: 40vh;
+    background-size: cover;
+    background-position: 50% 40%;
+    margin-top: -1vw;
+}
+
 /* Ligger menu punkterne i midten/center */
 
 #menu {
@@ -49,28 +63,22 @@ a {
 /* Styling på bodyen og menuen */
 
 body {
+    margin: 0;
     --def: #96B7C4;
     --inv: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
     background-color: black;
-}
-
-div {
-    margin-bottom: 3rem;
 }
 
 /* Styling og effekter på knapperne */
 
 .btn {
+    margin-top: 2vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
     position: relative;
     padding: 1.4rem 4.2rem;
     padding-right: 3.1rem;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: var(--inv);
     letter-spacing: 1.1rem;
     text-transform: uppercase;
@@ -90,7 +98,7 @@ div {
 
 .btn:hover {
     color: black;
-    transition-delay: .6s;
+    transition-delay: .2s;
 }
 
 .btn:hover:before {
@@ -98,8 +106,8 @@ div {
 }
 
 .btn:hover:after {
-    background: rgba(255, 255, 255, 0.7);
-    transition-delay: .4s;
+    background: rgba(255, 255, 255, 0.8);
+    transition-delay: .2s;
 }
 
 /* From Middle knap styling og effekt */
@@ -181,3 +189,34 @@ div {
 .from-right:hover:after {
     width: 100%;
 }
+
+/* Forside */
+
+/* Om */
+
+#aboutMe {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#laura {
+    flex-basis: 600px;
+    width: 10vw;
+    margin-right: 1vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+#txtMe {
+    flex-basis: 600px;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
+
+#txtMe p {
+    color: white;
+}
+
+/* Shop */
