@@ -4,9 +4,13 @@
     box-sizing: border-box;
 }
 
+/* Fjerner linjen under a tags */
+
 a {
     text-decoration: none;
 }
+
+/* Fonte */
 
 @font-face {
     font-family: 'more_than_humanregular';
@@ -35,10 +39,14 @@ a {
 
 }
 
+/* Ligger menu punkterne i midten/center */
+
 #menu {
     display: flex;
     justify-content: center;
 }
+
+/* Styling på bodyen og menuen */
 
 body {
     --def: #96B7C4;
@@ -52,13 +60,11 @@ body {
     background-color: black;
 }
 
-html {
-    font-family: 'ravens_clawsregular';
-}
-
 div {
     margin-bottom: 3rem;
 }
+
+/* Styling og effekter på knapperne */
 
 .btn {
     position: relative;
@@ -71,6 +77,7 @@ div {
     transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
     cursor: pointer;
     user-select: none;
+    font-family: 'ravens_clawsregular';
 }
 
 .btn:before,
@@ -82,7 +89,7 @@ div {
 }
 
 .btn:hover {
-    color: var(--def);
+    color: black;
     transition-delay: .6s;
 }
 
@@ -91,11 +98,11 @@ div {
 }
 
 .btn:hover:after {
-    background: var(--inv);
+    background: rgba(255, 255, 255, 0.7);
     transition-delay: .4s;
 }
 
-/* From Middle */
+/* From Middle knap styling og effekt */
 
 .from-middle:before {
     top: 0;
@@ -125,7 +132,7 @@ div {
     height: 100%;
 }
 
-/* From Left */
+/* From Left knap styling og effekt */
 
 .from-left:before,
 .from-left:after {
@@ -150,7 +157,7 @@ div {
     width: 100%;
 }
 
-/* From Right */
+/* From Right knap styling og effekt */
 
 .from-right:before,
 .from-right:after {
