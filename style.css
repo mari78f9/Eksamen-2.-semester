@@ -98,7 +98,7 @@ body {
 
 .btn:hover {
     color: black;
-    transition-delay: .2s;
+    transition-delay: .4s;
 }
 
 .btn:hover:before {
@@ -107,7 +107,7 @@ body {
 
 .btn:hover:after {
     background: rgba(255, 255, 255, 0.8);
-    transition-delay: .2s;
+    transition-delay: .4s;
 }
 
 /* From Middle knap styling og effekt */
@@ -220,3 +220,24 @@ body {
 }
 
 /* Shop */
+
+/* Footer */
+
+#info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+footer {
+    left: 0;
+    bottom: 0;
+    max-width: none;
+    height: 25vh;
+    width: 100%;
+    background-color: white;
+}
+
+#logo {
+    width: 10vw;
+}
