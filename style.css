@@ -207,9 +207,11 @@ body {
 
 #menuToggle {
     display: block;
-    position: relative;
-    top: 10vw;
-    left: 84vw;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    /* top: 10vw;
+    left: 84vw;*/
 
     z-index: 1;
 
@@ -302,16 +304,17 @@ body {
 
 #burger {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
-    margin: -19vw 0 0 -84vw;
+    width: 100.2vw;
+    height: 103.6vh;
+    margin: -100px 0 0 -50px;
+    /*  margin: -19vw 0 0 -84vw;*/
     padding: 35vw;
     padding-top: 125px;
     background: rgba(255, 255, 255, 0.8);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
-    transform: translate(100%, 0);
+    transform: translate(-100%, 0);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
