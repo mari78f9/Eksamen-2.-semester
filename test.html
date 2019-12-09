@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,39 @@
 </head>
 
 <body>
-    <div id="menu">
-        <a href="index.html">
-            <div class="btn from-left">Home</div>
-        </a>
-        <a href="about.html">
-            <div class="btn from-middle">About</div>
-        </a>
-        <a href="shop.html">
-            <div class="btn from-right">Shop</div>
-        </a>
-    </div>
+    <header>
+        <nav>
+            <div id="menu">
+                <a href="index.html">
+                    <div class="btn from-left">Home</div>
+                </a>
+                <a href="about.html">
+                    <div class="btn from-middle">About</div>
+                </a>
+                <a href="shop.html">
+                    <div class="btn from-right">Shop</div>
+                </a>
+            </div>
+        </nav>
+        <nav role="navigation">
+            <div id="menuToggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="burger">
+                    <a href="index.html">
+                        <li>Home</li>
+                    </a>
+                    <a href="about.html">
+                        <li>About</li>
+                    </a>
+                    <a href="shop.html">
+                        <li>Shop</li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <script src="script.js"></script>
 </body></html>

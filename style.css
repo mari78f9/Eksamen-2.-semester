@@ -73,10 +73,13 @@ a {
 
 body {
     margin: 0;
+    padding: 0;
     --def: #96B7C4;
     --inv: #fff;
     background: black;
 }
+
+/* MENU */
 
 /* Styling og effekter på knapperne */
 
@@ -200,9 +203,139 @@ body {
     width: 100%;
 }
 
-/* Forside */
+/* BURGER MENU */
 
-/* Om */
+#menuToggle {
+    display: block;
+    position: relative;
+    top: 10vw;
+    left: 84vw;
+
+    z-index: 1;
+
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#menuToggle a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+    color: #D9B95B;
+}
+
+
+#menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+
+    cursor: pointer;
+
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+
+    z-index: 1;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+    transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+}
+
+/*
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: black;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+#burger {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: -19vw 0 0 -84vw;
+    padding: 35vw;
+    padding-top: 125px;
+    background: rgba(255, 255, 255, 0.8);
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#burger:target {
+    display: block;
+}
+
+#burger li {
+    padding-top: 10vw;
+    padding-bottom: 0;
+    font-size: 4rem;
+    font-family: 'ravens_clawsregular';
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul {
+    transform: none;
+}
+
+/* FORSIDE */
+
+/* OM */
 
 #aboutMe {
     display: flex;
@@ -248,9 +381,9 @@ body {
     margin-bottom: 2vw;
 }
 
-/* Shop */
+/* SHOP */
 
-/* Footer */
+/* FOOTER */
 
 #info {
     display: flex;
@@ -289,4 +422,18 @@ footer {
 #openingHours {
     margin-left: 1vw;
     margin-top: 1.7vw;
+}
+
+/* MEDIA QUERYS*/
+
+@media only screen and (min-width: 600px) {
+    #menuToggle {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    #menu {
+        display: none;
+    }
 }
