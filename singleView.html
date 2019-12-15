@@ -51,19 +51,6 @@
             </div>
         </nav>
     </header>
-    <nav class="filterSize">
-        <button class="filter valgt" data-size="alle">All</button>
-        <button class="filter" data-size="A3">A3</button>
-        <button class="filter" data-size="A4">A4</button>
-    </nav>
-    <nav class="filterPrice">
-        <button class="filter-pris valgt" data-pris="alle">All</button>
-        <button class="filter-pris" data-pris="100.00">100 DKK</button>
-        <button class="filter-pris" data-pris="150.00">150 DKK</button>
-        <button class="filter-pris" data-pris="200.00">200 DKK</button>
-        <button class="filter-pris" data-pris="250.00">250 DKK</button>
-        <button class="filter-pris" data-pris="300.00">300 DKK</button>
-    </nav>
     <section class="tegninger">
         <template>
             <article class="kategori">
@@ -71,6 +58,7 @@
                 <h1 class="titel"></h1>
                 <h2 class="size"></h2>
                 <h2 class="pris"></h2>
+                <button class="luk">Tilbage</button>
             </article>
         </template>
     </section>
@@ -104,7 +92,6 @@
 
         function start() {
             hentJson();
-            addEventListenersToButtons();
         }
 
         async function hentJson() {
@@ -123,48 +110,15 @@
                     klon.querySelector(".size").textContent = "Size: " + tegning.size;
                     klon.querySelector(".billede").src = tegning.billede.guid;
                     container.appendChild(klon);
-                    container.lastElementChild.addEventListener("click", () => {
-                        location.href = "singleView.html?id=";
-                    });
+
+
                 }
-            });
-        }
-
-        function addEventListenersToButtons() {
-            document.querySelectorAll(".filter").forEach(elm => {
-                elm.addEventListener("click", filtrering);
             })
-            document.querySelectorAll(".filter-pris").forEach(elm => {
-                elm.addEventListener("click", filtreringPris)
-            })
+
         }
-
-        function filtrering() {
-            filter = this.dataset.size;
-
-            if (filter == "alle") {
-                filterPris = "alle";
-                document.querySelectorAll(".filter-pris").forEach(elm => {
-                    elm.classList.remove("valgt");
-                })
-            }
-
-            document.querySelectorAll(".filter").forEach(elm => {
-                elm.classList.remove("valgt");
-            })
-            this.classList.add("valgt");
-            visTegninger();
-        }
-
-        function filtreringPris() {
-            filterPris = this.dataset.pris;
-            let valgtSize = document.querySelector(".valgt").textContent;
-            document.querySelectorAll(".filter-pris").forEach(elm => {
-                elm.classList.remove("valgt");
-            });
-            this.classList.add("valgt");
-            visTegninger();
-        }
+        document.querySelector(".luk").addEventListener("click", () => {
+            history.back();
+        });
 
     </script>
 </body>
