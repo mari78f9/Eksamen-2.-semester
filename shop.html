@@ -45,6 +45,9 @@
             </div>
         </nav>
     </header>
+    <div class="drawingTxt">
+        <h2>Buy one of my drawings</h2>
+    </div>
     <div class="filterMenu">
         <div class="dropdown1">
             <button class="dropbtn filter valgt">Sizes &#8642;</button>
@@ -68,7 +71,12 @@
     <section class="tegninger">
         <template>
             <article class="kategori">
-                <img src="" alt="" class="billede">
+                <div class="container">
+                    <img src="" alt="" class="billede image">
+                    <div class="bottom">
+                        <div class="text">View</div>
+                    </div>
+                </div>
                 <div class="infoBox">
                     <h1 class="titel"></h1>
                     <h2 class="size"></h2>
@@ -168,5 +176,8 @@
             this.classList.add("valgt");
             visTegninger();
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
