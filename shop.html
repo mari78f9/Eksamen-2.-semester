@@ -7,12 +7,6 @@
     <title>Eksamen 2. semester</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=KoHo:200&display=swap" rel="stylesheet">
-    <style>
-        .valgt {
-            background-color: aqua;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -51,26 +45,35 @@
             </div>
         </nav>
     </header>
-    <nav class="filterSize">
-        <button class="filter valgt" data-size="alle">All</button>
-        <button class="filter" data-size="A3">A3</button>
-        <button class="filter" data-size="A4">A4</button>
-    </nav>
-    <nav class="filterPrice">
-        <button class="filter-pris valgt" data-pris="alle">All</button>
-        <button class="filter-pris" data-pris="100.00">100 DKK</button>
-        <button class="filter-pris" data-pris="150.00">150 DKK</button>
-        <button class="filter-pris" data-pris="200.00">200 DKK</button>
-        <button class="filter-pris" data-pris="250.00">250 DKK</button>
-        <button class="filter-pris" data-pris="300.00">300 DKK</button>
-    </nav>
+    <div class="filterMenu">
+        <div class="dropdown1">
+            <button class="dropbtn filter valgt">Sizes &#8642;</button>
+            <div class="dropdown-content">
+                <button class="filter valgt" data-size="alle">All</button>
+                <button class="filter" data-size="A3">A3</button>
+                <button class="filter" data-size="A4">A4</button>
+            </div>
+        </div>
+        <div class="dropdown2">
+            <button class="dropbtn filter valgt">Price &#8642;</button>
+            <div class="dropdown-content">
+                <button class="filter-pris valgt" data-pris="alle">All</button>
+                <button class="filter-pris" data-pris="100.00">100 DKK</button>
+                <button class="filter-pris" data-pris="150.00">150 DKK</button>
+                <button class="filter-pris" data-pris="200.00">200 DKK</button>
+                <button class="filter-pris" data-pris="250.00">250 DKK</button>
+            </div>
+        </div>
+    </div>
     <section class="tegninger">
         <template>
             <article class="kategori">
                 <img src="" alt="" class="billede">
-                <h1 class="titel"></h1>
-                <h2 class="size"></h2>
-                <h2 class="pris"></h2>
+                <div class="infoBox">
+                    <h1 class="titel"></h1>
+                    <h2 class="size"></h2>
+                    <h2 class="pris"></h2>
+                </div>
             </article>
         </template>
     </section>
@@ -115,7 +118,7 @@
 
         function visTegninger() {
             container.innerHTML = "";
-            alleTegninger.forEach((tegning) => {
+            alleTegninger.forEach((tegning, i) => {
                 if ((filter == "alle" || filter == tegning.size) && (filterPris == "alle" || filterPris == tegning.pris)) {
                     let klon = templateContainer.cloneNode(true).content;
                     klon.querySelector(".titel").textContent = tegning.title.rendered;
@@ -124,7 +127,7 @@
                     klon.querySelector(".billede").src = tegning.billede.guid;
                     container.appendChild(klon);
                     container.lastElementChild.addEventListener("click", () => {
-                        location.href = "singleView.html?id=";
+                        location.href = "singleView.html?id=" + tegning.id;
                     });
                 }
             });
@@ -165,8 +168,5 @@
             this.classList.add("valgt");
             visTegninger();
         }
-
     </script>
-</body>
-
-</html>
+</body></html>

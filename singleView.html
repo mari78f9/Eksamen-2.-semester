@@ -7,12 +7,6 @@
     <title>Eksamen 2. semester</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=KoHo:200&display=swap" rel="stylesheet">
-    <style>
-        .valgt {
-            background-color: aqua;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -51,16 +45,19 @@
             </div>
         </nav>
     </header>
-    <section class="tegninger">
-        <template>
-            <article class="kategori">
+    <section id="detalje">
+        <article class="tegning">
+            <div class="box1">
                 <img src="" alt="" class="billede">
+            </div>
+            <div class="box2">
                 <h1 class="titel"></h1>
                 <h2 class="size"></h2>
                 <h2 class="pris"></h2>
-                <button class="luk">Tilbage</button>
-            </article>
-        </template>
+                <h3 class="info"></h3>
+                <button class="luk"> &#8636; Tilbage</button>
+            </div>
+        </article>
     </section>
     <footer>
         <div id="info">
@@ -82,11 +79,10 @@
         </div>
     </footer>
     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
         let alleTegninger = [];
-        let filter = "alle";
-        let filterPris = "alle";
         const container = document.querySelector(".tegninger");
-        const templateContainer = document.querySelector("template");
         const endPoint = "https://quizeytimes.com/Eksamen-2-semester/wordpress/wp-json/wp/v2/tegninger";
         document.addEventListener("DOMContentLoaded", start);
 
@@ -101,17 +97,13 @@
         }
 
         function visTegninger() {
-            container.innerHTML = "";
             alleTegninger.forEach((tegning) => {
-                if ((filter == "alle" || filter == tegning.size) && (filterPris == "alle" || filterPris == tegning.pris)) {
-                    let klon = templateContainer.cloneNode(true).content;
-                    klon.querySelector(".titel").textContent = tegning.title.rendered;
-                    klon.querySelector(".pris").textContent = tegning.pris + " DKK";
-                    klon.querySelector(".size").textContent = "Size: " + tegning.size;
-                    klon.querySelector(".billede").src = tegning.billede.guid;
-                    container.appendChild(klon);
-
-
+                if (tegning.id == id) {
+                    document.querySelector(".titel").textContent = tegning.title.rendered;
+                    document.querySelector(".pris").textContent = tegning.pris + " DKK";
+                    document.querySelector(".size").textContent = "Size: " + tegning.size;
+                    document.querySelector(".info").textContent = tegning.info;
+                    document.querySelector(".billede").src = tegning.billede.guid;
                 }
             })
 
@@ -119,8 +111,5 @@
         document.querySelector(".luk").addEventListener("click", () => {
             history.back();
         });
-
     </script>
-</body>
-
-</html>
+</body></html>

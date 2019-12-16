@@ -388,32 +388,55 @@ body {
 
 /* SHOP */
 
-.dropbtn {
-    background: rgb(200, 200, 200);
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+.valgt {
+    background-color: #D9B95B;
 }
 
-.dropdown {
+.dropbtn {
+    color: white;
+    background: black;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    padding-right: 0.5vw;
+    padding-left: 0.5vw;
+    padding-bottom: 1vw;
+    padding-top: 1vw;
+}
+
+.dropdown1 {
+    border: solid rgb(200, 200, 200) 2px;
+    color: black;
     position: relative;
     display: inline-block;
+    margin-right: 1vw;
+}
+
+.dropdown2 {
+    border: solid rgb(200, 200, 200) 2px;
+    color: black;
+    position: relative;
+    display: inline-block;
+    margin-left: 1vw;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
+    background-color: white;
+    min-width: 10vw;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    font-size: 1.5rem;
+}
+
+.dropbtn:hover {
+    color: black;
 }
 
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 1vw 2vw;
     text-decoration: none;
     display: block;
 }
@@ -422,12 +445,24 @@ body {
     background-color: #f1f1f1
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown1:hover .dropdown-content {
     display: block;
 }
 
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+.dropdown1:hover .dropbtn {
+    background-color: #D9B95B;
+}
+
+.dropdown2:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown2:hover .dropbtn {
+    background-color: #D9B95B;
+}
+
+button:hover {
+    background-color: #D9B95B;
 }
 
 button {
@@ -435,33 +470,40 @@ button {
     border: none;
     cursor: pointer;
     font-family: 'KoHo', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
 .filterMenu {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
+    margin-right: 13vw;
 }
 
 .titel {
-    color: black;
+    margin-top: -1vw;
+    color: #D9B95B;
     font-size: 2.5rem;
     font-family: 'cloister_blacklight';
-    padding-left: 2vw;
+    padding-left: 2.2vw;
+    margin-bottom: 1.5vw;
 }
 
 .pris {
-    color: black;
+    margin-top: -1vw;
+    color: white;
     font-size: 1.5rem;
     font-family: 'KoHo', sans-serif;
-    padding-left: 2vw;
+    padding-left: 2.2vw;
 }
 
 .size {
-    color: black;
+    margin-top: -1vw;
+    color: white;
     font-size: 1.5rem;
     font-family: 'KoHo', sans-serif;
-    padding-left: 2vw;
+    padding-left: 2.2vw;
 }
 
 .tegninger {
@@ -470,7 +512,8 @@ button {
     grid-template-rows: 10vw 10vw;
     grid-gap: 6vw;
     margin-top: 14vw;
-    margin-left: 15vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 
 .billede img {
@@ -483,6 +526,7 @@ button {
 }
 
 .tegninger {
+    cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     margin-top: 3vw;
@@ -490,8 +534,53 @@ button {
 
 .kategori {
     flex-basis: 300px;
-    background: rgb(200, 200, 200);
-    margin: 2vw;
+    margin: 0;
+}
+
+/* SINGLEVIEW */
+
+#detalje {
+    justify-content: center;
+    margin-left: 15vw;
+}
+
+#detalje h3 {
+    color: white;
+    font-family: 'KoHo', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 2vw;
+    margin-right: -2vw;
+}
+
+#detalje .luk {
+    margin-top: 3vw;
+    color: white;
+    background: black;
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-left: 2vw;
+    font-family: 'KoHo', sans-serif;
+    font-weight: bold;
+    border: solid rgb(200, 200, 200) 2px;
+}
+
+#detalje .tegning {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 60vw;
+    padding: 2rem;
+}
+
+.box1 {
+    flex-basis: 600px;
+}
+
+.box2 {
+    margin-top: 3vw;
+    flex-basis: 300px;
 }
 
 /* FOOTER */
@@ -580,12 +669,57 @@ footer {
         margin-left: 14vw;
         margin-right: 14vw;
     }
-}
 
-h4 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 20%;
-    font-size: 2rem;
-    color: #55a6d9;
+    .dropbtn {
+        padding-right: 0.5vw;
+        padding-left: 0.5vw;
+        padding-bottom: 1vw;
+        padding-top: 1vw;
+    }
+
+    button {
+        width: 30vw;
+    }
+
+    .dropdown1 {
+        margin-top: 5vw;
+    }
+
+    .dropdown2 {
+        margin-top: 5vw;
+    }
+
+    #detalje .tegning {
+        flex-wrap: wrap;
+        margin-bottom: 15vw;
+    }
+
+    #detalje .luk {
+        font-size: 1.4rem;
+    }
+
+    .tegninger {
+        margin-top: 10vw;
+        margin-right: 5vw;
+        margin-left: 5vw;
+        justify-content: center;
+    }
+
+    .billede {
+        margin: 0;
+        width: 60vw;
+        padding: 0vw;
+    }
+
+    .kategori {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .infoBox {
+        width: 60vw;
+        margin-left: -2vw;
+        margin-top: 2vw;
+    }
 }
