@@ -668,6 +668,22 @@ button {
 
 /* SINGLEVIEW */
 
+.buy {
+    margin-top: 3vw;
+    margin-left: 2vw;
+    color: white;
+    background: black;
+    font-size: 2rem;
+    cursor: pointer;
+    font-family: 'KoHo', sans-serif;
+    font-weight: bold;
+    border: solid rgb(200, 200, 200) 2px;
+}
+
+.buy:hover {
+    color: black;
+}
+
 #detalje {
     justify-content: center;
     margin-left: 15vw;
@@ -686,13 +702,17 @@ button {
     margin-top: 3vw;
     color: white;
     background: black;
-    position: absolute;
     font-size: 2rem;
     cursor: pointer;
     margin-left: 2vw;
     font-family: 'KoHo', sans-serif;
     font-weight: bold;
     border: solid rgb(200, 200, 200) 2px;
+}
+
+#detalje .luk:hover {
+    background: #D9B95B;
+    color: black;
 }
 
 #detalje .tegning {
@@ -840,10 +860,6 @@ footer {
         margin-bottom: 15vw;
     }
 
-    #detalje .luk {
-        font-size: 1.4rem;
-    }
-
     .tegninger {
         margin-top: 10vw;
         margin-right: 5vw;
@@ -908,6 +924,11 @@ footer {
     #laura2 {
         width: 50vw;
         margin-top: 0vw;
+    }
+
+    .buttonInstagram {
+        margin-top: 10vw;
+        margin-bottom: 10vw;
     }
 
 }
