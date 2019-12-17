@@ -341,6 +341,18 @@ body {
 }
 
 /* FORSIDE */
+
+video {
+    width: 80vw;
+    height: auto;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .feed {
     display: grid;
     justify-content: center;
@@ -388,11 +400,28 @@ body {
 
 #aboutMe {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
 }
 
+#aboutMe .box1 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 1;
+    margin-right: 15vw;
+    margin-left: 15vw;
+}
+
+#aboutMe .box2 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    justify-content: center;
+    flex-grow: 1;
+    margin-right: 15vw;
+    margin-left: 15vw;
+}
 
 #aboutMe h1 {
     color: #D9B95B;
@@ -401,19 +430,19 @@ body {
     font-weight: lighter;
     margin-top: 0;
     font-weight: lighter;
+    margin-left: 1vw;
 }
 
 #laura {
-    flex-basis: 300px;
     width: 30vw;
     margin-right: 1vw;
-
 }
 
-#txtMe {
-    flex-basis: 600px;
+#laura2 {
+    width: 30vw;
     margin-left: 1vw;
-    margin-right: 1vw;
+    margin-top: -15vw;
+    margin-bottom: 5vw;
 }
 
 #txtMe p {
@@ -421,16 +450,15 @@ body {
     font-size: 1.5rem;
     font-family: 'KoHo', sans-serif;
     font-weight: bold;
+    margin-left: 1vw;
 }
 
 #txtMe2 p {
     color: white;
     font-size: 1.5rem;
-    margin-right: 14vw;
-    margin-left: 14vw;
     font-family: 'KoHo', sans-serif;
     font-weight: bold;
-    margin-bottom: 5vw;
+    margin-right: 1vw;
 }
 
 /* SHOP */
@@ -863,6 +891,23 @@ footer {
     .drawingTxt {
         margin: 2vw;
         text-align: center;
+    }
+
+    #aboutMe .box1 {
+        flex-wrap: wrap;
+    }
+
+    #aboutMe .box2 {
+        flex-wrap: wrap;
+    }
+
+    #laura {
+        width: 50vw;
+    }
+
+    #laura2 {
+        width: 50vw;
+        margin-top: 0vw;
     }
 
 }
