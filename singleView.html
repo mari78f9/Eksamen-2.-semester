@@ -55,6 +55,8 @@
             </div>
         </nav>
     </header>
+
+    <!-- Indholdet af den valgte tegning bliver vist, nu med en beskrivelse og en "tilbage" og "køb" knap -->
     <section id="detalje">
         <article class="tegning">
             <div class="box1">
@@ -65,6 +67,8 @@
                 <h2 class="size"></h2>
                 <h2 class="pris"></h2>
                 <h3 class="info"></h3>
+
+                <!-- Gør at hvis man klikker på knappen så bliver der åbnet en ny fane med Laura's instagram -->
                 <a href="https://www.instagram.com/luciferandleviathans/" target="_blank">
                     <button class="buy">Buy &#9789;</button>
                 </a>
@@ -75,7 +79,7 @@
     <footer>
         <div id="info">
             <div id="instagram">
-                <a href="https://www.instagram.com/luciferandleviathans/">
+                <a href="https://www.instagram.com/luciferandleviathans/" target="_blank">
                     <img src="images/instragramLogo.png" alt="instagram" id="logo">
                 </a>
             </div>
@@ -92,10 +96,13 @@
         </div>
     </footer>
     <script>
+        /* Henter data fra id'et i url'en, den søger i url'en efter den data den skal hente, i vores tilfælde beder vi den om at hente id'et i url'en og dens data */
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
         let alleTegninger = [];
         const container = document.querySelector(".tegninger");
+
+        /* Henter data fra vores wordpress */
         const endPoint = "https://quizeytimes.com/Eksamen-2-semester/wordpress/wp-json/wp/v2/tegninger";
         document.addEventListener("DOMContentLoaded", start);
 
@@ -109,9 +116,12 @@
             visTegninger();
         }
 
+        /* Den henter titel, pris, størrelse, billede og en beskrivelse, kaldet info. Når man klikker på en tegning fra array'et og hvis det matcher med tegningens "id" så bliver et article tag udfyldt */
         function visTegninger() {
             alleTegninger.forEach((tegning) => {
                 if (tegning.id == id) {
+
+                    /* Specifik data hentes fra wordpress */
                     document.querySelector(".titel").textContent = tegning.title.rendered;
                     document.querySelector(".pris").textContent = tegning.pris + " DKK";
                     document.querySelector(".size").textContent = "Size: " + tegning.size;
@@ -121,11 +131,9 @@
             })
 
         }
+        /* Gør at hvis man klikker på "back" kanppen, så kommer man tilbage til den side man var på før, kan fx være shop siden. Altså et skridt tilbage i historikken/tilbage til siden */
         document.querySelector(".luk").addEventListener("click", () => {
             history.back();
         });
-
     </script>
-</body>
-
-</html>
+</body></html>

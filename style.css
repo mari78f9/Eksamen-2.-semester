@@ -17,33 +17,6 @@ a {
 /* Fonte */
 
 @font-face {
-    font-family: 'more_than_humanregular';
-    src: url('font/morethanhuman-webfont.woff2') format('woff2'),
-        url('font/morethanhuman-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'demons_and_darlingsregular';
-    src: url('font/demonsanddarlings-webfont.woff2') format('woff2'),
-        url('font/demonsanddarlings-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'ravens_clawsregular';
-    src: url('font/ravens_claws-webfont.woff2') format('woff2'),
-        url('font/ravens_claws-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
     font-family: 'cloister_blacklight';
     src: url('font/cloisterblack-webfont.woff2') format('woff2'),
         url('font/cloisterblack-webfont.woff') format('woff');
@@ -51,6 +24,8 @@ a {
     font-style: normal;
 
 }
+
+/* vores splashbillede bliver sat øverst, som et "cover" */
 
 #splash {
     max-width: none;
@@ -91,12 +66,11 @@ body {
     position: relative;
     padding: 1.4rem 4.2rem;
     padding-right: 3.1rem;
-    font-size: 2.5rem;
     color: var(--inv);
     letter-spacing: 1.1rem;
+    /* Gør at stregerne og kassen over teksten slider ind som en smooth transition */
     transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
     cursor: pointer;
-    user-select: none;
     font-family: 'cloister_blacklight';
     font-weight: lighter;
     font-size: 5rem;
@@ -106,11 +80,18 @@ body {
 
 .btn:before,
 .btn:after {
+    /* Gør at stregerne og kassen over teksten bliver vist i menuen */
     content: '';
     position: absolute;
+
+    /* Gør også at stregerne og kassen over teksten laver en animering, uden den bliver stregerne og kassen bare vist med det samme */
     transition: inherit;
+
+    /* Gør at man kan klikke på det valgte lag i menuen og at teksten i sort bliver vist når den hvide boks kommer over*/
     z-index: -1;
 }
+
+/* Gør at transitionen/animeringen sker ved at der er en mus på menuen, altså hover */
 
 .btn:hover {
     color: black;
@@ -208,16 +189,16 @@ body {
 
 /* BURGER MENU */
 
+/* Styling af burgermenuen*/
+
 #menuToggle {
     display: block;
     position: absolute;
     top: 50px;
     right: 50px;
 
+    /* Gør at man kan klikke på det valgte lag i burgermenuen, i dette tilfælde ville det nok være checkboxen. Skifter man nummeret til 2 fx, så ville man klikke på en af stregerne og ikke hele boxen */
     z-index: 1;
-
-    -webkit-user-select: none;
-    user-select: none;
 }
 
 #menuToggle a {
@@ -238,19 +219,17 @@ body {
     position: absolute;
     top: -7px;
     left: -5px;
-
     cursor: pointer;
 
+    /* Gør at checkboxen ikke er synlig */
     opacity: 0;
-    /* hide this */
+
+    /* Gør at man kan klikke på det valgte lag i burgermenuen, i dette tilfælde ville det nok være checkboxen. Skifter man nummeret til 1 fx, så ville man klikke på en af stregerne og ikke hele boxen */
     z-index: 2;
-    /* and place it over the hamburger */
-    -webkit-touch-callout: none;
 }
 
-/*
- * Just a quick hamburger
- */
+/* Span er de tre streger i burgermenuen, en span for hver streg */
+
 #menuToggle span {
     display: block;
     /* størrelse på burgermenuen */
@@ -258,55 +237,54 @@ body {
     height: 4px;
     margin-bottom: 5px;
     position: relative;
-
     background: rgba(255, 255, 255, 0.8);
     border-radius: 3px;
-    /* ligger 'checkbox' yderst så det er den man klikker på, istedet for striberne */
+
+    /* Ligger 'checkbox' yderst så det er den man klikker på, istedet for striberne */
     z-index: 1;
 
+    /* Gør to ud af de tre streger der er bliver lavet som et X */
     transform-origin: 4px 0px;
 
+    /* Laver animationen til når man klikker på burgermenuen, ellers skifter den bare fra 3 streger til et X uden animation */
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
         background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
         opacity 0.55s ease;
 }
 
-#menuToggle span:first-child {
-    transform-origin: 0% 0%;
-}
 
+/* Gjorde visuelt ikke nogen forskel og burgermenuen virkede stadig, men den var med fra den originale kode */
+/*#menuToggle span:first-child {
+    transform-origin: 0% 0%;
+}*/
+
+/* Gør at stregerne til X'et ligger ordenligt som et X */
 #menuToggle span:nth-last-child(2) {
     transform-origin: 0% 100%;
 }
 
-/*
- * Transform all the slices of hamburger
- * into a crossmark.
- */
+/* Ligger den ene streg til at være et kryds og gør den sort */
 #menuToggle input:checked ~ span {
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
     background: black;
 }
 
-/*
- * But let's hide the middle one.
- */
+/* Gemmer den midterste streg */
 #menuToggle input:checked ~ span:nth-last-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
+/* Ligger den anden streg til at være et kryds */
 #menuToggle input:checked ~ span:nth-last-child(2) {
     transform: rotate(-45deg) translate(0, -1px);
 }
 
 #burger {
     position: fixed;
-    /* størrelse på burgermenuen når den er klikket på og bliver 'pakket' ud */
+
+    /* Størrelse på burgermenuen når den er klikket på og bliver 'pakket' ud */
     width: 150vw;
     height: 150vh;
     margin: -22vw 0 0 -83vw;
@@ -314,17 +292,25 @@ body {
     padding-top: 125px;
     background: rgb(200, 200, 200);
     list-style-type: none;
-    -webkit-font-smoothing: antialiased;
+
+    /* Gemmer menuen når den ikke er klikket på */
     transform-origin: 0% 0%;
+
     /* Gør at burgermenuen kommer ind fra højre side med en animation */
     transform: translate(100%, 0);
+
+    /* Laver animationen så den laver en smooth transition når den kommer ind på skærmen */
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
-#burger:target {
-    display: block;
-}
 
+/* Gjorde visuelt ikke nogen forskel og burgermenuen virkede stadig, men den var med fra den originale kode */
+/*#burger:target {
+    display: block;
+}*/
+
+
+/* Valg af font osv til burgermenuen */
 #burger li {
     padding-top: 10vw;
     padding-bottom: 0;
@@ -333,26 +319,30 @@ body {
     font-weight: lighter;
 }
 
-/*
- * And let's slide it in from the left
- */
+/* Gør at burgermenuen kommer frem fra siden, når logo'et er blevet klikket på */
 #menuToggle input:checked ~ ul {
     transform: none;
 }
 
 /* FORSIDE */
 
+
+/* Valg af størrelse af videoen */
 video {
     width: 80vw;
     height: auto;
 }
 
+
+/* Ligger videoen i midten */
 .intro {
     display: flex;
     justify-content: center;
     margin: 0 auto;
 }
 
+
+/* Ligger Laura's instagram billeder i et grid med 4 kolonner, bliver så skiftet til to kolonner ved en bredde fra 600px og mindre på en skærm */
 .feed {
     display: grid;
     justify-content: center;
@@ -361,6 +351,7 @@ video {
     grid-gap: 2vw;
 }
 
+/* Gør at billederne ligger i samme størrelse kasser */
 .feed {
     display: flex;
     flex-wrap: wrap;
@@ -368,6 +359,8 @@ video {
     margin-bottom: 3vw;
 }
 
+
+/* Størrelse af billederne */
 .feedPic {
     max-width: 20vw;
     max-height: 50vh;
@@ -382,6 +375,8 @@ video {
     font-size: 4rem;
 }
 
+
+/* Styling på knappen under billederne, som linker videre til hendes instagram*/
 .moreInstagram {
     font-size: 2rem;
     background-color: #D9B95B;
@@ -389,6 +384,14 @@ video {
     padding: 1vw;
 }
 
+.moreInstagram:hover {
+    border: solid rgb(200, 200, 200) 2px;
+    color: white;
+    background-color: black;
+}
+
+
+/* Ligger knappen i midten */
 .buttonInstagram {
     display: flex;
     flex-wrap: wrap;
@@ -398,6 +401,7 @@ video {
 
 /* OM */
 
+/*Gør at alt flexer på siden og styling */
 #aboutMe {
     display: flex;
     flex-direction: column;
@@ -463,6 +467,8 @@ video {
 
 /* SHOP */
 
+
+/* Hover effekt på hver tegning */
 .container {
     position: relative;
 }
@@ -472,30 +478,41 @@ video {
     display: block;
     width: 100%;
     height: auto;
+
+    /* Gør at boksen med teksten "view" og billedet som bliver mørkere laver en smooth transition*/
     transition: .5s ease;
-    backface-visibility: hidden;
 }
 
 .bottom {
+
+    /* Gør at tekst boksen laver en smooth transition */
     transition: .5s ease;
+
+    /* Gør at man først kan se boksen med teksten når man hover */
     opacity: 0;
     position: absolute;
     bottom: -1vw;
     left: 50%;
+
+    /* Gør at boksen ligger sig i midten */
     transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     text-align: center;
     width: 100%;
 }
 
+
+/* Hover effekten som gør at billedet bliver mørkere når man har sin mus over */
 .container:hover .image {
     opacity: 0.3;
 }
 
+/* Hover effekten som gør at boksen med teksten bliver vist når man haar en mus over */
 .container:hover .bottom {
     opacity: 1;
 }
 
+
+/* Styling at "view" boksen */
 .text {
     background-color: rgb(200, 200, 200);
     font-family: 'KoHo', sans-serif;
@@ -504,10 +521,12 @@ video {
     padding: 1vw;
 }
 
+/* Den valgte filtrering får en guldagtid farve */
 .valgt {
     background-color: #D9B95B;
 }
 
+/* Styling på "dropdown" menuen */
 .dropbtn {
     color: white;
     background: black;
@@ -542,10 +561,13 @@ video {
     background-color: white;
     min-width: 10vw;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+    /* Gør at der bliver klikket på det valgte lag */
     z-index: 1;
     font-size: 1.5rem;
 }
 
+/* Giver en hover effekt som gør at knapperne skifter farve */
 .dropbtn:hover {
     color: black;
 }
@@ -590,6 +612,7 @@ button {
     font-size: 1.5rem;
 }
 
+/* Placering af filter menuen på siden */
 .filterMenu {
     display: flex;
     flex-wrap: wrap;
@@ -597,6 +620,7 @@ button {
     margin-right: 13vw;
 }
 
+/* Styling af infoen hentet fra wordpress */
 .titel {
     margin-top: -1vw;
     color: #D9B95B;
@@ -623,6 +647,7 @@ button {
     padding-left: 2.2vw;
 }
 
+/* Ligger tegninger i et grid med 4 kolonner som bliver til 1 kolonne i mobil versionen */
 .tegninger {
     display: grid;
     grid-template-columns: 15vw 15vw 15vw;
@@ -642,6 +667,7 @@ button {
     padding: 2vw;
 }
 
+/* Gør at man kan se at man kan klikke på tegningerne og gør at de kan flexe */
 .tegninger {
     cursor: pointer;
     display: flex;
@@ -668,6 +694,8 @@ button {
 
 /* SINGLEVIEW */
 
+
+/* Styling på "buy" knappen */
 .buy {
     margin-top: 3vw;
     margin-left: 2vw;
@@ -684,6 +712,9 @@ button {
     color: black;
 }
 
+/* Single view delen */
+
+/* Ligger alt infoen i midten */
 #detalje {
     justify-content: center;
     margin-left: 15vw;
@@ -698,6 +729,7 @@ button {
     margin-right: -2vw;
 }
 
+/* Styling af "back" knappen */
 #detalje .luk {
     margin-top: 3vw;
     color: white;
@@ -734,6 +766,7 @@ button {
 
 /* FOOTER */
 
+/* Ligger infoen i midten */
 #info {
     display: flex;
     flex-wrap: wrap;
@@ -748,6 +781,7 @@ button {
     margin-bottom: 0;
 }
 
+/* Størrelse af footeren */
 footer {
     left: 0;
     bottom: 0;
@@ -797,13 +831,17 @@ footer {
 
 /* MEDIA QUERYS*/
 
+/* Gør at burger menuen ikke bliver vist i web versionen */
 @media only screen and (min-width: 600px) {
     #menuToggle {
         display: none;
     }
 }
 
+/* Styling og gør forskellige ting responsivt med mobil versionen */
 @media only screen and (max-width: 599px) {
+
+    /* Gør at menuen ikke bliver vist i mobil versionen */
     #menu {
         display: none;
     }
@@ -913,17 +951,26 @@ footer {
     }
 
     #laura {
-        width: 50vw;
+        width: 70vw;
     }
 
     #laura2 {
-        width: 50vw;
+        width: 70vw;
         margin-top: 0vw;
     }
 
     .buttonInstagram {
         margin-top: 10vw;
         margin-bottom: 10vw;
+    }
+
+    #txtMe {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #txtMe2 p {
+        margin-right: 0;
     }
 
 }

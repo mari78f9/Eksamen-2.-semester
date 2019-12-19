@@ -5,9 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eksamen 2. semester</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=KoHo:200&display=swap" rel="stylesheet">
     <meta name="robots" content="noindex">
+
+    <!-- CSS'en -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=KoHo:200&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
@@ -20,8 +26,13 @@
 </head>
 
 <body>
+    <!-- Splashbillede -->
     <div id="splash"></div>
+
+    <!-- Burgermenu og webmenu -->
     <header>
+
+        <!-- Web menu -->
         <nav>
             <div id="menu">
                 <a href="index.html">
@@ -35,9 +46,15 @@
                 </a>
             </div>
         </nav>
+
+        <!-- Burger menu -->
         <nav role="navigation">
             <div id="menuToggle">
+
+                <!-- Checkbox gør at man kan klikke på burgermenuen uden at bruge javascript -->
                 <input type="checkbox" />
+
+                <!-- De 3 streger der bliver brugt til burgermenu'en -->
                 <span></span>
                 <span></span>
                 <span></span>
@@ -55,14 +72,20 @@
             </div>
         </nav>
     </header>
+
+    <!-- Intro videoen med Laura som bliver afspillet når man kommer ind på siden automatisk med "autoplay" og afspiller af sig selv igen med "loop" -->
     <div class="intro">
         <video controls autoplay loop>
             <source src="video/KEA_2SEM_Eksamen_v1.mp4" type="video/mp4">
         </video>
     </div>
+
+    <!-- En tekst hvor der står "More of my work" -->
     <div class="more">
         <h2>More of my work</h2>
     </div>
+
+    <!-- Billeder fra Laura's instagram som bliver puttet i et grid -->
     <div class="feed">
         <img src="images/feed1.jpg" alt="feed" class="feedPic">
         <img src="images/feed2.jpg" alt="feed" class="feedPic">
@@ -85,15 +108,19 @@
         <img src="images/feed19.jpg" alt="feed" class="feedPic">
         <img src="images/feed20.jpg" alt="feed" class="feedPic">
     </div>
+
+    <!-- En knap som gør at der bliver åbnet en ny fane med Laura's instagram -->
     <div class="buttonInstagram">
         <a href="https://www.instagram.com/luciferandleviathans/" target="_blank">
             <button class="moreInstagram">SEE MORE ON MY INSTAGRAM</button>
         </a>
     </div>
+
+    <!-- Footeren med info om Laura's instagram og hvor man kan finde hende -->
     <footer>
         <div id="info">
             <div id="instagram">
-                <a href="https://www.instagram.com/luciferandleviathans/">
+                <a href="https://www.instagram.com/luciferandleviathans/" target="_blank">
                     <img src="images/instragramLogo.png" alt="instagram" id="logo">
                 </a>
             </div>
@@ -110,6 +137,4 @@
         </div>
     </footer>
     <script></script>
-</body>
-
-</html>
+</body></html>

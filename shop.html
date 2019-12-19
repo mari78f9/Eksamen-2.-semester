@@ -5,9 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eksamen 2. semester</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=KoHo:200&display=swap" rel="stylesheet">
     <meta name="robots" content="noindex">
+
+    <!-- CSS'en -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=KoHo:200&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
@@ -20,8 +26,13 @@
 </head>
 
 <body>
+    <!-- Splashbillede -->
     <div id="splash"></div>
+
+    <!-- Burgermenu og webmenu -->
     <header>
+
+        <!-- Web menu -->
         <nav>
             <div id="menu">
                 <a href="index.html">
@@ -35,9 +46,15 @@
                 </a>
             </div>
         </nav>
+
+        <!-- Burger menu -->
         <nav role="navigation">
             <div id="menuToggle">
+
+                <!-- Checkbox gør at man kan klikke på burgermenuen uden at bruge javascript -->
                 <input type="checkbox" />
+
+                <!-- De 3 streger der bliver brugt til burgermenu'en -->
                 <span></span>
                 <span></span>
                 <span></span>
@@ -55,10 +72,16 @@
             </div>
         </nav>
     </header>
+
+    <!-- Tekst der gør brugeren opmærksom på at de kan købe en tegning på siden -->
     <div class="drawingTxt">
         <h2>Buy one of my drawings</h2>
     </div>
+
+    <!-- Filter menu'erne der filtrere med størrelse og pris -->
     <div class="filterMenu">
+
+        <!-- Filter menu der filtrere størrelser i en dropdown menu -->
         <div class="dropdown1">
             <button class="dropbtn filter valgt">Sizes &#8642;</button>
             <div class="dropdown-content">
@@ -67,6 +90,8 @@
                 <button class="filter" data-size="A4">A4</button>
             </div>
         </div>
+
+        <!--  Filter menu der filtrere priser i en dropdown menu -->
         <div class="dropdown2">
             <button class="dropbtn filter valgt">Price &#8642;</button>
             <div class="dropdown-content">
@@ -78,9 +103,13 @@
             </div>
         </div>
     </div>
+
+    <!-- Sektionen hvor informationen fra array'et/REST API/Pods kommer ind i en template så den kan vises og styles -->
     <section class="tegninger">
         <template>
             <article class="kategori">
+
+                <!-- Ligger hover effekten ind på billedet -->
                 <div class="container">
                     <img src="" alt="" class="billede image">
                     <div class="bottom">
@@ -95,10 +124,12 @@
             </article>
         </template>
     </section>
+
+    <!-- Footeren med info om Laura's instagram og hvor man kan finde hende -->
     <footer>
         <div id="info">
             <div id="instagram">
-                <a href="https://www.instagram.com/luciferandleviathans/">
+                <a href="https://www.instagram.com/luciferandleviathans/" target="_blank">
                     <img src="images/instragramLogo.png" alt="instagram" id="logo">
                 </a>
             </div>
@@ -115,28 +146,41 @@
         </div>
     </footer>
     <script>
+        /* Tomt array hvor tegningerne bliver hentet fra JSON/REST API/Pods */
         let alleTegninger = [];
+
+        /* "Alle" i filterfunktionen skal vises som udgangspunkt */
         let filter = "alle";
         let filterPris = "alle";
+
+        /* Skal "linke" med sektionen "tegninger" så den ved at det er der den skal sætte informationen ind */
         const container = document.querySelector(".tegninger");
         const templateContainer = document.querySelector("template");
-        const endPoint = "https://quizeytimes.com/Eksamen-2-semester/wordpress/wp-json/wp/v2/tegninger";
+
+        /* Henter data fra wordpress og informationer kommer hen til endPoint */
+        const endPoint = "https://quizeytimes.com/Eksamen-2-semester/wordpress/wp-json/wp/v2/tegninger?per_page=100";
+
+        /* Programmet går i gang når DOM'en er loadet færdig */
         document.addEventListener("DOMContentLoaded", start);
 
+
+        /* Henter JSON og gør at hvis der bliver klikket på en af filter knapperne så bliver addEventListernersToButtons() kaldt*/
         function start() {
             hentJson();
             addEventListenersToButtons();
         }
-
+        /* Informationerne fra endPoint bliver lagt i alleTegninger og visTegninger */
         async function hentJson() {
             let jsonData = await fetch(endPoint);
             alleTegninger = await jsonData.json();
             visTegninger();
         }
 
+        /* Henter data som billede, pris, størrelse og titel som skal vises i filtreringen. Der udvælges en enkelt specifik tegning fra array'et og et article bliver udfyldt, så pris kommer ind i h2 tagget som også hedder pris, altså ".pris". Derefter tilføjes de til .data, hvis de passer på det valgte filter */
         function visTegninger() {
             container.innerHTML = "";
             alleTegninger.forEach((tegning, i) => {
+                /* Gør at filtreringen sker med størrelse/size og pris */
                 if ((filter == "alle" || filter == tegning.size) && (filterPris == "alle" || filterPris == tegning.pris)) {
                     let klon = templateContainer.cloneNode(true).content;
                     klon.querySelector(".titel").textContent = tegning.title.rendered;
@@ -144,6 +188,8 @@
                     klon.querySelector(".size").textContent = "Size: " + tegning.size;
                     klon.querySelector(".billede").src = tegning.billede.guid;
                     container.appendChild(klon);
+
+                    /* Når man klikker på en af kasserne som indeholder billedet og infoen så kommer man hen til "singleView.html" og den pods id */
                     container.lastElementChild.addEventListener("click", () => {
                         location.href = "singleView.html?id=" + tegning.id;
                     });
@@ -151,6 +197,7 @@
             });
         }
 
+        /* Gør at man kan filtrere med knapper, ".filter" = filtrere størrelse og ".filter-pris" = filtrere pris. Som så gør at "filtrering" og "filtreringPris" bliver kaldt. Så hvis ".filter" knappen bliver trykket på, så bliver "filtrering" funktionen kaldt og hvis ".filter-pris" knappen bliver trykket på, så bliver "filtreringPris" funktionen kaldt */
         function addEventListenersToButtons() {
             document.querySelectorAll(".filter").forEach(elm => {
                 elm.addEventListener("click", filtrering);
@@ -160,6 +207,7 @@
             })
         }
 
+        /* Den ene filtrering som filtrere med størrelse og som henviser til filtrering af pris oven i, så man kan filtrere med dem begge på samme tid. Gør at "valgt" class'en bliver tilføjet til den valgte filtrering, men starter med at være på filtreringen "Alle". Vælger man en anden .filter funktion så følger "valgt" class'en med og bliver så fjernet fra den forrige valgte filtrering */
         function filtrering() {
             filter = this.dataset.size;
 
@@ -174,9 +222,12 @@
                 elm.classList.remove("valgt");
             })
             this.classList.add("valgt");
+
+            /* visTegninger funktionen kaldes, så den viser alle de tegninger som ligger inden for den valgte filtrering */
             visTegninger();
         }
 
+        /* Gør at knappen filtrere mellem pris. Gør at "valgt" class'en bliver tilføjet til den valgte filtrering, men starter med at være på filtreringen "Alle". Vælger man en anden .filter funktion så følger "valgt" class'en med og bliver så fjernet fra den forrige valgte filtrering  */
         function filtreringPris() {
             filterPris = this.dataset.pris;
             let valgtSize = document.querySelector(".valgt").textContent;
@@ -184,10 +235,9 @@
                 elm.classList.remove("valgt");
             });
             this.classList.add("valgt");
+
+            /* visTegninger funktionen kaldes, så den viser alle de tegninger som ligger inden for den valgte filtrering */
             visTegninger();
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
