@@ -34,7 +34,7 @@ a {
     width: 100vw;
     height: 40vh;
     background-size: cover;
-    background-position: 51% 40%;
+    background-position: 50% 40%;
     margin-top: -1vw;
 }
 
@@ -288,7 +288,7 @@ body {
     /* Størrelse på burgermenuen når den er klikket på og bliver 'pakket' ud */
     width: 150vw;
     height: 150vh;
-    margin: -22vw 0 0 -83vw;
+    margin: -22vw 0 0 -85vw;
     padding: 35vw;
     padding-top: 125px;
     background: rgb(200, 200, 200);
@@ -673,6 +673,7 @@ button {
     cursor: pointer;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     margin-top: 3vw;
 }
 
@@ -717,8 +718,9 @@ button {
 
 /* Ligger alt infoen i midten */
 #detalje {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-left: 15vw;
 }
 
 #detalje h3 {
@@ -833,18 +835,179 @@ footer {
 /* MEDIA QUERYS*/
 
 /* Gør at burger menuen ikke bliver vist i web versionen */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1200px) {
     #menuToggle {
         display: none;
     }
 }
 
+@media only screen and (max-width: 1200px) {
+
+    .filterMenu {
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    #splash {
+        background-image: url(images/mobile.jpg);
+    }
+
+    #burger {
+        margin: -22vw 0 0 -90vw;
+        padding: 40vw;
+    }
+
+    #burger li {
+        padding-top: 5vw;
+        padding-bottom: 0;
+        font-size: 6rem;
+        font-family: 'cloister_blacklight';
+        font-weight: lighter;
+    }
+
+    footer {
+        height: 20vh;
+    }
+
+    #logo {
+        width: 25%;
+    }
+
+    #instagram {
+        margin-right: -20vw;
+        margin-left: 2vw;
+    }
+
+    #info {
+        flex-wrap: nowrap;
+    }
+
+    #laura {
+        margin-top: 10vw;
+        margin-bottom: 5vw;
+    }
+
+    #txtMe h1 {
+        margin-top: 5vw;
+        text-align: center;
+    }
+
+    #txtMe {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #aboutMe .box1 {
+        flex-wrap: wrap;
+    }
+
+    #aboutMe .box2 {
+        flex-wrap: wrap;
+    }
+
+    #laura {
+        margin-top: 5vw;
+        margin-bottom: 0;
+        width: 60vw;
+    }
+
+    #laura2 {
+        width: 60vw;
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .dropbtn {
+        padding-right: 0.5vw;
+        padding-left: 0.5vw;
+        padding-bottom: 1vw;
+        padding-top: 1vw;
+    }
+
+    button {
+        width: 30vw;
+    }
+
+    .dropdown1 {
+        margin-top: 5vw;
+    }
+
+    .dropdown2 {
+        margin-top: 5vw;
+    }
+
+    .drawingTxt {
+        margin: 0;
+        text-align: center;
+    }
+
+    .billede {
+        margin: 0;
+        width: 60vw;
+        padding: 0vw;
+    }
+
+    .tegning {
+        margin: 0;
+    }
+
+    #detalje .tegning {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 10vw;
+        width: 80vw;
+    }
+
+    .box2 {
+        flex-basis: 600px;
+    }
+
+}
+
 /* Styling og gør forskellige ting responsivt med mobil versionen */
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 600px) {
 
     /* Gør at menuen ikke bliver vist i mobil versionen */
     #menu {
         display: none;
+    }
+
+    #detalje {
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 15vw;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    #detalje .tegning {
+        margin: 0;
+        padding: 0;
+        width: 80vw;
+    }
+
+    #burger {
+        margin: -25vw 0 0 -90vw;
+    }
+
+    video {
+        width: 100vw;
+    }
+
+    #info {
+        flex-wrap: wrap;
+    }
+
+    #burger li {
+        padding-top: 0;
+        padding-bottom: 3vw;
+        font-size: 4rem;
     }
 
     footer {
@@ -871,8 +1034,8 @@ footer {
     }
 
     #txtMe {
-        margin-left: 14vw;
-        margin-right: 14vw;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .dropbtn {
@@ -894,11 +1057,6 @@ footer {
         margin-top: 5vw;
     }
 
-    #detalje .tegning {
-        flex-wrap: wrap;
-        margin-bottom: 15vw;
-    }
-
     .tegninger {
         margin-top: 10vw;
         margin-right: 5vw;
@@ -908,7 +1066,7 @@ footer {
 
     .billede {
         margin: 0;
-        width: 60vw;
+        width: 80vw;
         padding: 0vw;
     }
 
@@ -924,10 +1082,6 @@ footer {
         margin-top: 2vw;
     }
 
-    #splash {
-        background-image: url(images/mobile.jpg);
-    }
-
     .feedPic {
         align-content: center;
         max-width: 40vw;
@@ -941,14 +1095,6 @@ footer {
     .drawingTxt {
         margin: 2vw;
         text-align: center;
-    }
-
-    #aboutMe .box1 {
-        flex-wrap: wrap;
-    }
-
-    #aboutMe .box2 {
-        flex-wrap: wrap;
     }
 
     #laura {
@@ -972,6 +1118,11 @@ footer {
 
     #txtMe2 p {
         margin-right: 0;
+    }
+
+    #detalje .luk {
+        width: 40vw;
+
     }
 
 }
